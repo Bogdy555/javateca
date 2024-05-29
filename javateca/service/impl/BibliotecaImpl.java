@@ -9,6 +9,8 @@ import javateca.repository.*;
 import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 
 
 
@@ -84,11 +86,11 @@ public class BibliotecaImpl implements Biblioteca
 		return result;
 	}
 
-	public List<Angajat> getAngajatSauStagiarDinDepartament(String departament) throws SQLException
+	public Set<Angajat> getAngajatSauStagiarDinDepartament(String departament) throws SQLException
 	{
 		List<Angajat> angajati = database.getAngajatSauStagiar();
 
-		List<Angajat> result = new ArrayList<Angajat>();
+		Set<Angajat> result = new TreeSet<Angajat>();
 
 		for (Angajat angajat : angajati)
 		{
@@ -101,11 +103,11 @@ public class BibliotecaImpl implements Biblioteca
 		return result;
 	}
 
-	public List<Angajat> getAngajatSauStagiarDinSediu(String sediu) throws SQLException
+	public Set<Angajat> getAngajatSauStagiarDinSediu(String sediu) throws SQLException
 	{
 		List<Angajat> angajati = database.getAngajatSauStagiar();
 
-		List<Angajat> result = new ArrayList<Angajat>();
+		Set<Angajat> result = new TreeSet<Angajat>();
 
 		for (Angajat angajat : angajati)
 		{

@@ -5,8 +5,9 @@ package javateca.service;
 import javateca.model.*;
 import javateca.repository.*;
 
-import java.util.List;
 import java.sql.*;
+import java.util.List;
+import java.util.Set;
 
 
 
@@ -21,7 +22,7 @@ public interface Biblioteca
 	public void imprumutaCarte(String carte, String client) throws SQLException;
 	public void returneazaCarte(String carte, String client) throws SQLException;
 	public List<Carte> getCartiDinCategorie(String categorie) throws SQLException;
-	public List<Angajat> getAngajatSauStagiarDinDepartament(String departament) throws SQLException;
-	public List<Angajat> getAngajatSauStagiarDinSediu(String sediu) throws SQLException;
+	public Set<Angajat> getAngajatSauStagiarDinDepartament(String departament) throws SQLException;
+	public Set<Angajat> getAngajatSauStagiarDinSediu(String sediu) throws SQLException;
 
 }

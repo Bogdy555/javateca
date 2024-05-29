@@ -6,6 +6,7 @@ import javateca.service.impl.*;
 
 import java.sql.*;
 import java.util.List;
+import java.util.Set;
 
 
 
@@ -40,8 +41,8 @@ public class Main
 			biblioteca.imprumutaCarte("Nano-biology", "Prala Tudor");
 			biblioteca.returneazaCarte("Nano-biology", "Prala Tudor");
 			List<Carte> cartiDinCategorie = biblioteca.getCartiDinCategorie("Stiinta");
-			List<Angajat> angajatiSauStagiariDinDepartament = biblioteca.getAngajatSauStagiarDinDepartament("HR");
-			List<Angajat> angajatiSauStagiariDinSediu = biblioteca.getAngajatSauStagiarDinSediu("Piata Romana");
+			Set<Angajat> angajatiSauStagiariDinDepartament = biblioteca.getAngajatSauStagiarDinDepartament("HR");
+			Set<Angajat> angajatiSauStagiariDinSediu = biblioteca.getAngajatSauStagiarDinSediu("Piata Romana");
 		}
 		catch (SQLException exception)
 		{
