@@ -26,26 +26,32 @@ public class BibliotecaImpl implements Biblioteca
 
 	public void addAngajatSauStagiar(Angajat angajat) throws SQLException
 	{
+		database.addLog(new Log("addAngajatSauStagiar"));
 		database.addAngajatSauStagiar(angajat);
 	}
 
 	public void addCarte(Carte carte) throws SQLException
 	{
+		database.addLog(new Log("addCarte"));
 		database.addCarte(carte);
 	}
 
 	public void addCategorie(Categorie categorie) throws SQLException
 	{
+		database.addLog(new Log("addCategorie"));
 		database.addCategorie(categorie);
 	}
 
 	public void addClient(Client client) throws SQLException
 	{
+		database.addLog(new Log("addClient"));
 		database.addClient(client);
 	}
 
 	public Carte findCarte(String nume) throws SQLException
 	{
+		database.addLog(new Log("findCarte"));
+
 		List<Carte> carti = database.getCarte();
 
 		for (Carte carte : carti)
@@ -61,16 +67,20 @@ public class BibliotecaImpl implements Biblioteca
 
 	public void imprumutaCarte(String carte, String client) throws SQLException
 	{
+		database.addLog(new Log("imprumutaCarte"));
 		database.addImprumut(new Imprumut(carte, client));
 	}
 
 	public void returneazaCarte(String carte, String client) throws SQLException
 	{
+		database.addLog(new Log("returneazaCarte"));
 		database.removeImprumut(carte, client);
 	}
 
 	public List<Carte> getCartiDinCategorie(String categorie) throws SQLException
 	{
+		database.addLog(new Log("getCartiDinCategorie"));
+
 		List<Carte> carti = database.getCarte();
 
 		List<Carte> result = new ArrayList<Carte>();
@@ -88,6 +98,8 @@ public class BibliotecaImpl implements Biblioteca
 
 	public Set<Angajat> getAngajatSauStagiarDinDepartament(String departament) throws SQLException
 	{
+		database.addLog(new Log("getAngajatSauStagiarDinDepartament"));
+
 		List<Angajat> angajati = database.getAngajatSauStagiar();
 
 		Set<Angajat> result = new TreeSet<Angajat>();
@@ -105,6 +117,8 @@ public class BibliotecaImpl implements Biblioteca
 
 	public Set<Angajat> getAngajatSauStagiarDinSediu(String sediu) throws SQLException
 	{
+		database.addLog(new Log("getAngajatSauStagiarDinSediu"));
+
 		List<Angajat> angajati = database.getAngajatSauStagiar();
 
 		Set<Angajat> result = new TreeSet<Angajat>();
@@ -118,6 +132,12 @@ public class BibliotecaImpl implements Biblioteca
 		}
 
 		return result;
+	}
+
+	public List<Log> getLog() throws SQLException
+	{
+		database.addLog(new Log("getLog"));
+		return database.getLog();
 	}
 
 }

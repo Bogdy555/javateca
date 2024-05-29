@@ -24,5 +24,6 @@ public interface Biblioteca
 	public List<Carte> getCartiDinCategorie(String categorie) throws SQLException;
 	public Set<Angajat> getAngajatSauStagiarDinDepartament(String departament) throws SQLException;
 	public Set<Angajat> getAngajatSauStagiarDinSediu(String sediu) throws SQLException;
+	public List<Log> getLog() throws SQLException;
 
 }

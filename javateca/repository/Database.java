@@ -18,6 +18,7 @@ public interface Database
 	public List<Client> getClient() throws SQLException;
 	public List<Departament> getDepartament() throws SQLException;
 	public List<Imprumut> getImprumut() throws SQLException;
+	public List<Log> getLog() throws SQLException;
 	public List<Sediu> getSediu() throws SQLException;
 
 	public void addAngajatSauStagiar(Angajat angajat) throws SQLException;
@@ -26,6 +27,7 @@ public interface Database
 	public void addClient(Client client) throws SQLException;
 	public void addDepartament(Departament departament) throws SQLException;
 	public void addImprumut(Imprumut imprumut) throws SQLException;
+	public void addLog(Log log) throws SQLException;
 	public void addSediu(Sediu sediu) throws SQLException;
 
 	public void removeAngajatSauStagiar(String nume) throws SQLException;

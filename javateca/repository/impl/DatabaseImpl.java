@@ -22,14 +22,16 @@ public class DatabaseImpl implements Database
 	{
 		connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/javateca", "postgres", "GitHub_Bogdy555");
 
-		connection.prepareStatement("DROP TABLE DEPARTAMENT;").executeUpdate();
-		connection.prepareStatement("DROP TABLE SEDIU;").executeUpdate();
-		connection.prepareStatement("DROP TABLE ANGAJAT_SAU_STAGIAR;").executeUpdate();
-		connection.prepareStatement("DROP TABLE CATEGORIE;").executeUpdate();
-		connection.prepareStatement("DROP TABLE CARTE;").executeUpdate();
-		connection.prepareStatement("DROP TABLE CLIENT;").executeUpdate();
-		connection.prepareStatement("DROP TABLE IMPRUMUT;").executeUpdate();
+		try { connection.prepareStatement("DROP TABLE LOG;").executeUpdate(); } catch (SQLException exception) { }
+		try { connection.prepareStatement("DROP TABLE DEPARTAMENT;").executeUpdate(); } catch (SQLException exception) { }
+		try { connection.prepareStatement("DROP TABLE SEDIU;").executeUpdate(); } catch (SQLException exception) { }
+		try { connection.prepareStatement("DROP TABLE ANGAJAT_SAU_STAGIAR;").executeUpdate(); } catch (SQLException exception) { }
+		try { connection.prepareStatement("DROP TABLE CATEGORIE;").executeUpdate(); } catch (SQLException exception) { }
+		try { connection.prepareStatement("DROP TABLE CARTE;").executeUpdate(); } catch (SQLException exception) { }
+		try { connection.prepareStatement("DROP TABLE CLIENT;").executeUpdate(); } catch (SQLException exception) { }
+		try { connection.prepareStatement("DROP TABLE IMPRUMUT;").executeUpdate(); } catch (SQLException exception) { }
 
+		connection.prepareStatement("CREATE TABLE LOG (NUME VARCHAR(100), MOMENT TIMESTAMP DEFAULT CURRENT_TIMESTAMP);").executeUpdate();
 		connection.prepareStatement("CREATE TABLE DEPARTAMENT (NUME VARCHAR(100));").executeUpdate();
 		connection.prepareStatement("CREATE TABLE SEDIU (ADRESA VARCHAR(100));").executeUpdate();
 		connection.prepareStatement("CREATE TABLE ANGAJAT_SAU_STAGIAR (NUME VARCHAR(100), DEPARTAMENT VARCHAR(100), SEDIU VARCHAR(100), MENTOR VARCHAR(100));").executeUpdate();
@@ -179,6 +181,20 @@ public class DatabaseImpl implements Database
 		return result;
 	}
 
+	public List<Log> getLog() throws SQLException
+	{
+		ResultSet queryResult = connection.createStatement().executeQuery("SELECT * FROM LOG");
+
+		List<Log> result = new ArrayList<Log>();
+
+		while (queryResult.next())
+		{
+			result.add(new Log(queryResult.getString("NUME")));
+		}
+
+		return result;
+	}
+
 	public List<Sediu> getSediu() throws SQLException
 	{
 		ResultSet queryResult = connection.createStatement().executeQuery("SELECT * FROM SEDIU");
@@ -230,6 +246,11 @@ public class DatabaseImpl implements Database
 	public void addImprumut(Imprumut imprumut) throws SQLException
 	{
 		connection.prepareStatement("INSERT INTO IMPRUMUT (CARTE, CLIENT) VALUES (\'" + imprumut.getCarte() + "\', \'" + imprumut.getClient() + "\')").executeUpdate();
+	}
+
+	public void addLog(Log log) throws SQLException
+	{
+		connection.prepareStatement("INSERT INTO LOG (NUME) VALUES (\'" + log.getNume() + "\')").executeUpdate();
 	}
 
 	public void addSediu(Sediu sediu) throws SQLException

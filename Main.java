@@ -43,6 +43,11 @@ public class Main
 			List<Carte> cartiDinCategorie = biblioteca.getCartiDinCategorie("Stiinta");
 			Set<Angajat> angajatiSauStagiariDinDepartament = biblioteca.getAngajatSauStagiarDinDepartament("HR");
 			Set<Angajat> angajatiSauStagiariDinSediu = biblioteca.getAngajatSauStagiarDinSediu("Piata Romana");
+			List<Log> logs = biblioteca.getLog();
+			for (Log log : logs)
+			{
+				System.out.println(log.getNume());
+			}
 		}
 		catch (SQLException exception)
 		{
