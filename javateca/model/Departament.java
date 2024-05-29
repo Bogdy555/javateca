@@ -1,13 +1,13 @@
-package javateca;
+package javateca.model;
 
 
 
-public class Categorie
+public class Departament
 {
 
 	private String nume;
 
-	public Categorie(String nume)
+	public Departament(String nume)
 	{
 		this.nume = nume;
 	}

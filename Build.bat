@@ -1,10 +1,3 @@
-javac ".\javateca\Angajat.java"
-javac ".\javateca\Carte.java"
-javac ".\javateca\Categorie.java"
-javac ".\javateca\Client.java"
-javac ".\javateca\Database.java"
-javac ".\javateca\Departament.java"
-javac ".\javateca\Imprumut.java"
-javac ".\javateca\Sediu.java"
-javac ".\javateca\Stagiar.java"
 javac ".\Main.java"
+
+java -cp ".\;.\postgresql-42.7.2.jar" ".\Main.java"

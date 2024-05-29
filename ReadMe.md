@@ -1,4 +1,4 @@
-# Clase:
+# Model:
 
 1. Angajat
 1. Carte
@@ -9,7 +9,7 @@
 1. Sediu
 1. Stagiar
 
-# Utilitati:
+# Service:
 
 1. Adaugare angajati
 1. Adaugare carti
